@@ -52,4 +52,13 @@ public class Sale {
     public int hashCode() {
         return Objects.hash(getId(), getTotalValue(), getSalesperson());
     }
+
+    @Override
+    public String toString() {
+        return "Sale{" +
+                "id=" + id +
+                ", totalValue=" + totalValue +
+                ", salesperson='" + salesperson + '\'' +
+                '}';
+    }
 }

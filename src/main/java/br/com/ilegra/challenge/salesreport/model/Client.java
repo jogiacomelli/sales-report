@@ -52,4 +52,13 @@ public class Client {
     public int hashCode() {
         return Objects.hash(getCnpj(), getName(), getBusinessArea());
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "cnpj=" + cnpj +
+                ", name='" + name + '\'' +
+                ", businessArea='" + businessArea + '\'' +
+                '}';
+    }
 }

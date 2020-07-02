@@ -52,4 +52,13 @@ public class Salesperson {
     public int hashCode() {
         return Objects.hash(getCpf(), getName(), getSalary());
     }
+
+    @Override
+    public String toString() {
+        return "Salesperson{" +
+                "cpf=" + cpf +
+                ", name='" + name + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 }
