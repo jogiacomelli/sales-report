@@ -1,5 +1,7 @@
 package br.com.ilegra.challenge.salesreport.model;
 
+import java.util.Objects;
+
 public class Client {
 
     private long cnpj;
@@ -34,5 +36,20 @@ public class Client {
 
     public void setBusinessArea(String businessArea) {
         this.businessArea = businessArea;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return getCnpj() == client.getCnpj() &&
+                Objects.equals(getName(), client.getName()) &&
+                Objects.equals(getBusinessArea(), client.getBusinessArea());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCnpj(), getName(), getBusinessArea());
     }
 }

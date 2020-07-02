@@ -2,10 +2,12 @@ package br.com.ilegra.challenge.salesreport.strategy;
 
 import br.com.ilegra.challenge.salesreport.model.Client;
 import br.com.ilegra.challenge.salesreport.repository.ClientRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@Slf4j
 public class ClientDataStrategy implements DataStrategyInterface {
 
     @Autowired
@@ -19,5 +21,7 @@ public class ClientDataStrategy implements DataStrategyInterface {
 
         Client client = new Client(cnpj, name, businessArea);
         clientRepository.save(client);
+
+        log.debug("New client added: " + client.toString());
     }
 }

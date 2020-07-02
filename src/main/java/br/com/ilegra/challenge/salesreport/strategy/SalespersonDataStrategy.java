@@ -2,10 +2,12 @@ package br.com.ilegra.challenge.salesreport.strategy;
 
 import br.com.ilegra.challenge.salesreport.model.Salesperson;
 import br.com.ilegra.challenge.salesreport.repository.SalespersonRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@Slf4j
 public class SalespersonDataStrategy implements DataStrategyInterface {
 
     @Autowired
@@ -19,5 +21,8 @@ public class SalespersonDataStrategy implements DataStrategyInterface {
 
         Salesperson salesperson = new Salesperson(cpf, name, salary);
         salespersonRepository.save(salesperson);
+
+        log.debug("New salesperson added: " + salesperson.toString());
+
     }
 }

@@ -6,8 +6,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppProperties {
 
-    @Value("${home.folder}")
-    private String homePath;
+    private final String homePath = System.getProperty("user.home");
 
     @Value("${data.folder.in}")
     private String dataFolderIn;
@@ -32,6 +31,9 @@ public class AppProperties {
 
     @Value("${field.type.sale:003}")
     private String saleType;
+
+    @Value("${data.report.filename:salesreport}")
+    private String reportFilename;
 
 
     public String getHomePath() {
@@ -68,5 +70,9 @@ public class AppProperties {
 
     public String getSaleType() {
         return saleType;
+    }
+
+    public String getReportFilename() {
+        return reportFilename;
     }
 }

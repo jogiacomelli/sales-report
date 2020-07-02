@@ -1,10 +1,12 @@
 package br.com.ilegra.challenge.salesreport.strategy;
 
 import br.com.ilegra.challenge.salesreport.configuration.AppProperties;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@Slf4j
 public class DataStrategyFactory {
 
     @Autowired
@@ -34,7 +36,7 @@ public class DataStrategyFactory {
             }
 
         } else {
-            throw new RuntimeException("Inconsistent data.");
+            log.error("Inconsistent data. Expected 4 fields, but given " + data.length);
         }
     }
 }

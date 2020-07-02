@@ -3,10 +3,12 @@ package br.com.ilegra.challenge.salesreport.strategy;
 import br.com.ilegra.challenge.salesreport.configuration.AppProperties;
 import br.com.ilegra.challenge.salesreport.model.Sale;
 import br.com.ilegra.challenge.salesreport.repository.SaleRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@Slf4j
 public class SaleDataStrategy implements DataStrategyInterface {
 
     @Autowired
@@ -32,5 +34,7 @@ public class SaleDataStrategy implements DataStrategyInterface {
 
         Sale sale = new Sale(id, totalValue, salesperson);
         saleRepository.save(sale);
+
+        log.debug("New sale added: " + sale.toString());
     }
 }

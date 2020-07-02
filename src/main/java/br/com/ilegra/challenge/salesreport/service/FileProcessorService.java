@@ -3,6 +3,7 @@ package br.com.ilegra.challenge.salesreport.service;
 import br.com.ilegra.challenge.salesreport.configuration.AppProperties;
 import br.com.ilegra.challenge.salesreport.strategy.DataStrategyFactory;
 import br.com.ilegra.challenge.salesreport.utils.FileUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j
 public class FileProcessorService {
 
     @Autowired
@@ -32,8 +34,9 @@ public class FileProcessorService {
             if(FileUtils.fileExists(file) && FileUtils.fileIsPlainText(file)){
                 lines = FileUtils.readLines(file);
             }
+            log.debug("New file read. " + lines.size() + " lines");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Error reading file " + file.toString(), e);
         }
 
         lines.forEach(line -> {

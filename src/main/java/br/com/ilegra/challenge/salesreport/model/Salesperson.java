@@ -1,5 +1,7 @@
 package br.com.ilegra.challenge.salesreport.model;
 
+import java.util.Objects;
+
 public class Salesperson {
 
     private long cpf;
@@ -34,5 +36,20 @@ public class Salesperson {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Salesperson that = (Salesperson) o;
+        return getCpf() == that.getCpf() &&
+                Double.compare(that.getSalary(), getSalary()) == 0 &&
+                Objects.equals(getName(), that.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCpf(), getName(), getSalary());
     }
 }

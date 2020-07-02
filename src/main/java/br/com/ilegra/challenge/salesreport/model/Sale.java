@@ -1,5 +1,7 @@
 package br.com.ilegra.challenge.salesreport.model;
 
+import java.util.Objects;
+
 public class Sale {
 
     private long id;
@@ -34,5 +36,20 @@ public class Sale {
 
     public void setSalesperson(String salesperson) {
         this.salesperson = salesperson;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sale sale = (Sale) o;
+        return getId() == sale.getId() &&
+                Double.compare(sale.getTotalValue(), getTotalValue()) == 0 &&
+                Objects.equals(getSalesperson(), sale.getSalesperson());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getTotalValue(), getSalesperson());
     }
 }

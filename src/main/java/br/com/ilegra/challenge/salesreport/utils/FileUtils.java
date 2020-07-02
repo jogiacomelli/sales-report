@@ -1,9 +1,6 @@
 package br.com.ilegra.challenge.salesreport.utils;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -46,5 +43,17 @@ public class FileUtils {
         s.close();
 
         return lines;
+    }
+
+    public static void saveToFile(String text, Path pathToFile) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(pathToFile.toString()));
+        writer.write(text);
+        writer.close();
+    }
+
+    public static boolean createFile(Path reportFilePath) throws IOException {
+        File file = new File(reportFilePath.toString());
+
+        return file.createNewFile();
     }
 }
